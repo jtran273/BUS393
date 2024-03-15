@@ -63,12 +63,12 @@ CREATE TABLE mentoring_session (
     session_id INT PRIMARY KEY AUTO_INCREMENT,
     mentee_id INT,
     FOREIGN KEY (mentee_id) REFERENCES mentees(mentee_id),
-    session_date DATE NOT NULL,
-    session_time TIME NOT NULL,
-    session_duration INT NOT NULL,
-    session_location TEXT NOT NULL,
-    session_modality TEXT NOT NULL,
-    session_topic TEXT NOT NULL
+    session_date DATE,
+    session_time TIME,
+    session_duration INT,
+    session_location TEXT,
+    session_modality TEXT,
+    session_topic TEXT
 );
 
 -- Career Peer Staff
@@ -84,11 +84,11 @@ CREATE TABLE career_peer_staff (
 -- Onboarding Appointment
 CREATE TABLE training_appointment (
     training_appointment_id INT PRIMARY KEY AUTO_INCREMENT,
-    training_date DATE NOT NULL,
-    training_time TIME NOT NULL,
-    duration INT NOT NULL,
-    appt_location VARCHAR(20) NOT NULL,
-    appt_modality VARCHAR(20) NOT NULL,
+    training_date DATE,
+    training_time TIME,
+    duration INT,
+    appt_location VARCHAR(20),
+    appt_modality VARCHAR(20),
     reason_for_appt ENUM('Onboarding', 'Training'),
     topics_covered VARCHAR(400),
     feedback VARCHAR(100),
