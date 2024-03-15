@@ -61,16 +61,14 @@ CREATE TABLE mentees (
 -- Mentoring Session
 CREATE TABLE mentoring_session (
     session_id INT PRIMARY KEY AUTO_INCREMENT,
-    mentor_id INT,
-    FOREIGN KEY (mentor_id) REFERENCES mentors(mentor_id),
     mentee_id INT,
     FOREIGN KEY (mentee_id) REFERENCES mentees(mentee_id),
-    session_date DATE NOT NULL,
-    session_time TIME NOT NULL,
-    session_duration INT NOT NULL,
-    session_location TEXT NOT NULL,
-    session_modality TEXT NOT NULL,
-    session_topic TEXT NOT NULL
+    session_date DATE,
+    session_time TIME,
+    session_duration INT,
+    session_location TEXT,
+    session_modality TEXT,
+    session_topic TEXT
 );
 
 -- Career Peer Staff
@@ -86,11 +84,11 @@ CREATE TABLE career_peer_staff (
 -- Onboarding Appointment
 CREATE TABLE training_appointment (
     training_appointment_id INT PRIMARY KEY AUTO_INCREMENT,
-    training_date DATE NOT NULL,
-    training_time TIME NOT NULL,
-    duration INT NOT NULL,
-    appt_location VARCHAR(20) NOT NULL,
-    appt_modality VARCHAR(20) NOT NULL,
+    training_date DATE,
+    training_time TIME,
+    duration INT,
+    appt_location VARCHAR(20),
+    appt_modality VARCHAR(20),
     reason_for_appt ENUM('Onboarding', 'Training'),
     topics_covered VARCHAR(400),
     feedback VARCHAR(100),
@@ -221,23 +219,23 @@ VALUES
     ('2024-05-06', '09:00:00', 30, 'Conference Room', 'In-Person', 'Training', 'Time Management Training', 'Great interaction', 3, 6, NULL);
 
 -- Insert dummy data into the mentoring_session table
-INSERT INTO mentoring_session (mentor_id, mentee_id, session_date, session_time, session_duration, session_location, session_modality, session_topic)
+INSERT INTO mentoring_session (mentee_id, session_date, session_time, session_duration, session_location, session_modality, session_topic)
 VALUES
-    (1, 1, '2024-03-15', '10:00:00', 60, 'Virtual', 'Video Call', 'Resume and Cover Letter'),
-    (2, 2, '2024-03-16', '11:00:00', 45, 'Office', 'In-Person', 'Internship/Full-time Search'),
-    (3, 3, '2024-03-17', '09:00:00', 30, 'Conference Room', 'In-Person', 'Personal Brand'),
-    (4, 4, '2024-03-18', '13:00:00', 60, 'Virtual', 'Video Call', 'Networking'),
-    (5, 5, '2024-03-19', '14:00:00', 45, 'Office', 'In-Person', 'Offer & Negotiation Phase'),
-    (6, 6, '2024-03-20', '10:00:00', 30, 'Conference Room', 'In-Person', 'Career Fair'),
-    (7, 7, '2024-03-21', '11:00:00', 60, 'Virtual', 'Video Call', 'Navigation through internship or job experience'),
-    (8, 8, '2024-03-22', '13:00:00', 45, 'Office', 'In-Person', 'Mock Interview'),
-    (9, 9, '2024-03-23', '14:00:00', 30, 'Conference Room', 'In-Person', 'Career/Concentration Path'),
-    (10, 10, '2024-03-24', '15:00:00', 60, 'Virtual', 'Video Call', 'Alumni Mentoring Program'),
-    (11, 11, '2024-03-25', '10:00:00', 45, 'Office', 'In-Person', 'Guided self-assessment (PathwayU)'),
-    (12, 12, '2024-03-26', '11:00:00', 30, 'Conference Room', 'In-Person', 'Personal Brand'),
-    (13, 13, '2024-03-27', '13:00:00', 60, 'Virtual', 'Video Call', 'Resume and Cover Letter'),
-    (14, 14, '2024-03-28', '14:00:00', 45, 'Office', 'In-Person', 'Internship/Full-time Search'),
-    (15, 15, '2024-03-29', '09:00:00', 30, 'Conference Room', 'In-Person', 'Mock Interview');
+    (1, '2024-03-15', '10:00:00', 60, 'Virtual', 'Video Call', 'Resume and Cover Letter'),
+    (2, '2024-03-16', '11:00:00', 45, 'Office', 'In-Person', 'Internship/Full-time Search'),
+    (3, '2024-03-17', '09:00:00', 30, 'Conference Room', 'In-Person', 'Personal Brand'),
+    (4, '2024-03-18', '13:00:00', 60, 'Virtual', 'Video Call', 'Networking'),
+    (5, '2024-03-19', '14:00:00', 45, 'Office', 'In-Person', 'Offer & Negotiation Phase'),
+    (6, '2024-03-20', '10:00:00', 30, 'Conference Room', 'In-Person', 'Career Fair'),
+    (7, '2024-03-21', '11:00:00', 60, 'Virtual', 'Video Call', 'Navigation through internship or job experience'),
+    (8, '2024-03-22', '13:00:00', 45, 'Office', 'In-Person', 'Mock Interview'),
+    (9, '2024-03-23', '14:00:00', 30, 'Conference Room', 'In-Person', 'Career/Concentration Path'),
+    (10, '2024-03-24', '15:00:00', 60, 'Virtual', 'Video Call', 'Alumni Mentoring Program'),
+    (11, '2024-03-25', '10:00:00', 45, 'Office', 'In-Person', 'Guided self-assessment (PathwayU)'),
+    (12, '2024-03-26', '11:00:00', 30, 'Conference Room', 'In-Person', 'Personal Brand'),
+    (13, '2024-03-27', '13:00:00', 60, 'Virtual', 'Video Call', 'Resume and Cover Letter'),
+    (14, '2024-03-28', '14:00:00', 45, 'Office', 'In-Person', 'Internship/Full-time Search'),
+    (15, '2024-03-29', '09:00:00', 30, 'Conference Room', 'In-Person', 'Mock Interview');
 -- Queries
 
 -- List all mentors along with their associated company name and industry.
